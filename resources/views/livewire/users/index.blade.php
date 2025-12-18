@@ -1,6 +1,7 @@
 <div>
+
   <x-card>
-    <x-alert color="amber" icon="light-bulb">
+    <x-alert color="pink" icon="light-bulb">
       @lang('Remember to take a look at the source code to understand how the components in this area were built and are being used.')
     </x-alert>
 
@@ -15,13 +16,11 @@
 
       @interact('column_action', $row)
         <div class="flex gap-1">
-          <x-button.circle icon="pencil" wire:click="$dispatch('load::user', { 'user' : '{{ $row->id }}'})" />
+          <x-button.circle class="" icon="pencil"
+            wire:click="$dispatch('load::user', { 'user' : '{{ $row->id }}'})" />
           <livewire:users.delete :user="$row" :key="uniqid('', true)" @deleted="$refresh" />
         </div>
       @endinteract
     </x-table>
-
   </x-card>
-
-  {{-- <livewire:users.update @updated="$refresh" /> --}}
 </div>
